@@ -1,14 +1,13 @@
-const express = require("express"),
-      app = express(),
-      cors = require("cors"),
-      port = 8000,
-      dbname = "pet-shelter";
-    
+const express = require("express");
+const cors = require('cors');
+const app = express();
+const port = 8000;
 
+require("./config/mongoose.config");
 app.use(cors());
-app.use(express.json());
+app.use(express.json(), express.urlencoded({extended:true}));
 
-require('./config/mongoose')(dbname);
-require('./routes/pet.routes')(app);
+const AllRoutes = require("./routes/project.route");
+AllRoutes(app);
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Running on port ${port}!!`))

@@ -1,27 +1,19 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Link, Router} from '@reach/router';
-import Dashboard from './components/Dashboard';
-import PetForm from './components/PetForm';
-import Edit from './components/Edit';
-import Pet from './components/Pet';
+import 'bootstrap/dist/css/bootstrap.css';
+import {Router} from '@reach/router';
+import {BrowserRouter , Routes , Route} from "react-router-dom"
+import Main from './views/Main';
+import Add from './views/Add';
 
 function App() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-warning">
-          <h1>Pet Shelter</h1>
-            <Link className="nav-item nav-link text-info lead" to="/pets/new">add a pet t0 the shelter</Link>
-            <Link className="nav-item nav-link text-info lead" to="/">back to home</Link>
-      </nav>
+    <div className="App container">
+      <h1 className = "text-success border-bottom border-success m-3 pb-3">Project Manager</h1>
+
       <Router>
-        <Dashboard path="/"/>
-        <PetForm path="/pets/new"/>
-        <Edit path="/pets/:_id/edit"/>
-        <Pet path="/pets/:_id"/>
+        <Main path = "/"/>
+        <Add path = "/projects/new"/>
       </Router>
-      
     </div>
   );
 }
